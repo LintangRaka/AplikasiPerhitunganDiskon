@@ -26,6 +26,8 @@ public class PerhitunganDiskonFrame extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -36,6 +38,15 @@ public class PerhitunganDiskonFrame extends javax.swing.JFrame {
         txtHargaAkhir = new javax.swing.JTextField();
         txtPenghematan = new javax.swing.JTextField();
         btnHitung = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtKuponDiskon = new javax.swing.JTextField();
+        slDiskon = new javax.swing.JSlider();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtRiwayat = new javax.swing.JTextArea();
+
+        jLabel5.setText("jLabel5");
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,7 +69,7 @@ public class PerhitunganDiskonFrame extends javax.swing.JFrame {
         jLabel3.setText("Harga Akhir");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         jPanel1.add(jLabel3, gridBagConstraints);
@@ -66,7 +77,7 @@ public class PerhitunganDiskonFrame extends javax.swing.JFrame {
         jLabel4.setText("Jumlah Penghematan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         jPanel1.add(jLabel4, gridBagConstraints);
@@ -92,13 +103,13 @@ public class PerhitunganDiskonFrame extends javax.swing.JFrame {
         jPanel1.add(cbbDiskon, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         jPanel1.add(txtHargaAkhir, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         jPanel1.add(txtPenghematan, gridBagConstraints);
@@ -111,17 +122,60 @@ public class PerhitunganDiskonFrame extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         jPanel1.add(btnHitung, gridBagConstraints);
 
+        jLabel6.setText("Kupon Diskon");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jLabel6, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(txtKuponDiskon, gridBagConstraints);
+
+        slDiskon.setMajorTickSpacing(25);
+        slDiskon.setMinorTickSpacing(5);
+        slDiskon.setPaintLabels(true);
+        slDiskon.setPaintTicks(true);
+        slDiskon.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                slDiskonStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        jPanel1.add(slDiskon, gridBagConstraints);
+
+        txtRiwayat.setColumns(20);
+        txtRiwayat.setRows(5);
+        jScrollPane1.setViewportView(txtRiwayat);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        jPanel1.add(jScrollPane1, gridBagConstraints);
+
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void hitungDiskon() {
+private void hitungDiskon() {
         // Mengambil harga asli dari text field
         String hargaAsliText = txtHarga.getText();
 
@@ -129,18 +183,56 @@ public class PerhitunganDiskonFrame extends javax.swing.JFrame {
             // Mengonversi harga asli ke tipe data double
             double hargaAsli = Double.parseDouble(hargaAsliText);
 
-            // Mengambil diskon yang dipilih dari combo box
-            int diskon = Integer.parseInt((String) cbbDiskon.getSelectedItem());
+            // Mengambil nilai diskon dari slider
+            int diskon = slDiskon.getValue();  // Ambil nilai persentase diskon dari slider
 
-            // Menghitung jumlah penghematan
+            // Menghitung jumlah penghematan dari diskon utama
             double penghematan = hargaAsli * (diskon / 100.0);
 
-            // Menghitung harga akhir
+            // Menghitung harga akhir setelah diskon utama
             double hargaAkhir = hargaAsli - penghematan;
+
+            // Mendapatkan nilai kupon diskon dari txtKuponDiskon (berupa teks)
+            String kuponText = txtKuponDiskon.getText().trim();  // Menghapus spasi ekstra
+
+            // Menentukan diskon kupon berdasarkan kode kupon
+            double kuponDiskon = 0.0;
+
+            // Contoh kode kupon yang valid dan nilai diskonnya
+            if (kuponText.equalsIgnoreCase("DISKON10")) {
+                kuponDiskon = 10;  // 10% diskon
+            } else if (kuponText.equalsIgnoreCase("DISKON20")) {
+                kuponDiskon = 20;  // 20% diskon
+            } else if (kuponText.equalsIgnoreCase("DISKON50")) {
+                kuponDiskon = 50;  // 50% diskon
+            }
+
+            // Jika ada kupon yang valid, hitung diskon tambahan
+            if (kuponDiskon > 0) {
+                // Terapkan diskon tambahan kupon ke harga akhir
+                hargaAkhir -= hargaAkhir * (kuponDiskon / 100.0);
+                // Hitung penghematan tambahan
+                penghematan += hargaAsli * (kuponDiskon / 100.0);
+            } else if (!kuponText.isEmpty()) {
+                // Jika kupon tidak valid (tidak cocok dengan kode yang ada)
+                javax.swing.JOptionPane.showMessageDialog(this, "Kode kupon tidak valid!", "Error Kupon", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
             // Menampilkan hasil perhitungan pada text field
             txtPenghematan.setText(String.format("%.2f", penghematan));
             txtHargaAkhir.setText(String.format("%.2f", hargaAkhir));
+
+            // Menambahkan riwayat perhitungan ke textarea txtRiwayat
+            String riwayat = "Harga Asli: " + String.format("%.2f", hargaAsli) + "\n"
+                    + "Diskon: " + diskon + "%\n"
+                    + "Penghematan: " + String.format("%.2f", penghematan) + "\n"
+                    + "Harga Akhir: " + String.format("%.2f", hargaAkhir) + "\n"
+                    + "==============================\n";
+
+            // Menambahkan riwayat ke TextArea (txtRiwayat)
+            txtRiwayat.append(riwayat); // .append() digunakan untuk menambahkan teks ke akhir textarea
+
         } catch (NumberFormatException e) {
             // Menangani kesalahan jika input harga bukan angka
             javax.swing.JOptionPane.showMessageDialog(this, "Mohon masukkan harga yang valid!", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
@@ -152,8 +244,13 @@ public class PerhitunganDiskonFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHitungActionPerformed
 
     private void cbbDiskonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbDiskonItemStateChanged
-        hitungDiskon();
+        slDiskon.setValue(Integer.parseInt(cbbDiskon.getSelectedItem().toString()));
+
     }//GEN-LAST:event_cbbDiskonItemStateChanged
+
+    private void slDiskonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slDiskonStateChanged
+        
+    }//GEN-LAST:event_slDiskonStateChanged
 
     /**
      * @param args the command line arguments
@@ -197,9 +294,16 @@ public class PerhitunganDiskonFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JSlider slDiskon;
     private javax.swing.JTextField txtHarga;
     private javax.swing.JTextField txtHargaAkhir;
+    private javax.swing.JTextField txtKuponDiskon;
     private javax.swing.JTextField txtPenghematan;
+    private javax.swing.JTextArea txtRiwayat;
     // End of variables declaration//GEN-END:variables
 }
